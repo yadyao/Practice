@@ -7,21 +7,20 @@ terraform {
     }
   }
 
+  # backend "s3" {
+  # bucket = "bootcamp32-85-mary"
+  # key    = "ec2/terraform.tfstate"
+  # region = "us-west-2"
 
- /* backend "s3" {
-    bucket = "bootcamp32-85-mary"
-    key    = "ec2/terraform.tfstate"
-    region = "us-west-2"
+  #}
 
-  }*/
 }
 
-# Provider Block
 provider "aws" {
-  region = "us-west-2"
+  region = var.region[1]
 }
 
 variable "region" {
-  type = list(string)
-  default = ["us-west-1", "us-west-1", "us-west-1"]
+  type    = list(string)
+  default = ["us-west-1", "us-west-2", "us-east-1"]
 }
